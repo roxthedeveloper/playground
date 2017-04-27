@@ -6,11 +6,12 @@ module.exports = function(app){
 
     if(TESTING){
         async.parallel({
-            members: async.apply(createMembers),
-            workEvents: async.apply(createWorkEvents)   
+            members: async.apply(createMembers)
         }, function(err, results){
             if(err) throw err;
-            console.log('> models created successfully');
+            createWorkEvents(results.members, function(err){
+                console.log('> models created successfully');
+            });
         });
     }else{
         var lbTables = ['Member', 'WorkEvent'];
@@ -34,7 +35,7 @@ module.exports = function(app){
         });
     }
 
-    function createWorkEvents(cb){
+    function createWorkEvents(memebers, cb){
         mysqlDs.automigrate('WorkEvent', function(err){
             if(err) return cb(err);
             //insert data into db
@@ -47,7 +48,8 @@ module.exports = function(app){
                     start: (new Date(2017, 1, 2, 9, 10, 0, 0)).toJSON(), 
                     end: (new Date(2017, 1, 2, 20, 10, 0, 0)).toJSON(), 
                     createdOn: (new Date()).toJSON(),
-                    modifiedOn: (new Date()).toJSON()
+                    modifiedOn: (new Date()).toJSON(),
+                    ownerId: memebers[0].id
                 },
                 {
                     title: 'wedding for jason', 
@@ -56,7 +58,8 @@ module.exports = function(app){
                     start: (new Date(2017, 10, 2, 7, 10, 0, 0)).toJSON(), 
                     end: (new Date(2017, 10, 2, 22, 10, 0, 0)).toJSON(), 
                     createdOn: (new Date()).toJSON(),
-                    modifiedOn: (new Date()).toJSON()
+                    modifiedOn: (new Date()).toJSON(),
+                    ownerId: memebers[1].id
                 }
             ], cb);
         });

@@ -7,7 +7,20 @@
   },
   "properties": {},
   "validations": [],
-  "relations": {},
-  "acls": [],
+  "relations": {
+    "workEvents": {
+      "type": "hasMany",
+      "model": "WorkEvent",
+      "foreignKey": "ownerId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
   "methods": {}
 }
