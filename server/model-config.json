@@ -38,5 +38,9 @@
   "Member": {
     "dataSource": "mysqlDs",
     "public": true
+  },
+  "WorkEvent": {
+    "dataSource": "mysqlDs",
+    "public": true
   }
 }

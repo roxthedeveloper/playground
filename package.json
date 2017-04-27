@@ -2,7 +2,7 @@
   "name": "playground",
   "version": "1.0.0",
   "main": "server/server.js",
-  "scripts": {   
+  "scripts": {
     "lint": "eslint .",
     "start": "nodemon .",
     "posttest": "npm run lint && nsp check"
