@@ -42,7 +42,7 @@ module.exports = function(app){
             var WorkEvent = app.models.WorkEvent;
             WorkEvent.create([
                 {
-                    title: 'wedding for jack', 
+                    title: 'wedding for jackson', 
                     type: 'wedding', 
                     description: 'a short wedding in summer', 
                     start: (new Date(2017, 1, 2, 9, 10, 0, 0)).toJSON(), 
