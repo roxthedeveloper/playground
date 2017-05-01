@@ -1,0 +1,38 @@
+<section>
+    <form name="form" ng-submit="submitForm()">
+        <fieldset>
+            <legend>{{ Action }} event form</legend>
+
+            <div class="form-group">
+                <label>Title</label>
+                <input name="title" type="text" ng-model="workevent.title" required>
+                <p ng-show="form.title.$touched && form.title.$invalid" style="color:red;">Title is required.</p>
+            </div>
+
+            <div class="form-group">
+                <label>Type</label>
+                <select ng-disabled="isDisabled" ng-model="selectedType" ng-options="type for type in workTypes"></select>
+            </div>
+
+            <div class="form-group">
+                <label>Start</label>
+                <input name="start" type="datetime-local" ng-model="workevent.start" min="CurrentDatetime" step="5" required>
+            </div>
+
+            <div class="form-group">
+                <label>End</label>
+                <input name="end" type="datetime-local" ng-model="workevent.end" min="workevent.start" step="5" required>
+            </div>
+
+            <div class="form-group">
+                <label>Description</label>
+                <textarea name="description" ng-model="workevent.description"></textarea>
+            </div>
+
+            <div class="actions">
+                <label></label>
+                <button>{{ Action }} event</button>
+            </div>
+        </fieldset>
+    </form>
+</section>

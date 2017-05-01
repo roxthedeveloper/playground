@@ -15,12 +15,15 @@
     </head>
     <body>
         <header>
-            <h1>Work events</h1>
-            <h2 ng-show="currentUser">Hello {{currentUser.email}}</h2>
+            <h1>Event Playground</h1>
+            <h2 ng-show="currentUser" style="text-align: right;">Hello {{currentUser.email}}</h2>
             <nav>
                 <ul>
                     <li ng-show="currentUser">
                         <a ui-sref="my-events" ui-sref-active="active">My events</a>
+                    </li>
+                    <li ng-show="currentUser">
+                        <a ui-sref="add-event" ui-sref-active="active">Add event</a>
                     </li>
                     <li ng-hide="currentUser">
                         <a ui-sref="sign-up" ui-sref-active="active">Sign up</a>
