@@ -1,37 +1,37 @@
 <section>
     <form name="form" ng-submit="submitForm()">
         <fieldset>
-            <legend>{{ Action }} event form</legend>
+            <legend>{{ viewModel.action }} event form</legend>
 
             <div class="form-group">
                 <label>Title</label>
-                <input name="title" type="text" ng-model="workevent.title" required>
+                <input ng-disabled="viewModel.isTitleDisabled" name="title" type="text" ng-model="viewModel.eventTitle" required>
                 <p ng-show="form.title.$touched && form.title.$invalid" style="color:red;">Title is required.</p>
             </div>
 
             <div class="form-group">
                 <label>Type</label>
-                <select ng-disabled="isDisabled" ng-model="selectedType" ng-options="type for type in workTypes"></select>
+                <select ng-disabled="viewModel.isTypeDisabled" ng-model="viewModel.selectedType" ng-options="type for type in viewModel.workTypes"></select>
             </div>
 
             <div class="form-group">
                 <label>Start</label>
-                <input name="start" type="datetime-local" ng-model="workevent.start" min="CurrentDatetime" step="5" required>
+                <input name="start" type="datetime-local" ng-model="viewModel.startDatetime" min="viewModel.minStartDatetime" step="5" required>
             </div>
 
             <div class="form-group">
                 <label>End</label>
-                <input name="end" type="datetime-local" ng-model="workevent.end" min="workevent.start" step="5" required>
+                <input name="end" type="datetime-local" ng-model="viewModel.endDatetime" min="viewModel.minEndDatetime" step="5" required>
             </div>
 
             <div class="form-group">
                 <label>Description</label>
-                <textarea name="description" ng-model="workevent.description"></textarea>
+                <textarea name="description" ng-model="viewModel.eventDesc"></textarea>
             </div>
 
             <div class="actions">
                 <label></label>
-                <button>{{ Action }} event</button>
+                <button>{{ viewModel.action }} event</button>
             </div>
         </fieldset>
     </form>

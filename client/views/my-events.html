@@ -1,15 +1,16 @@
 <section>
     <article ng-repeat="wEvent in workevents.slice().reverse()">
         <header>
-            <h1>{{wEvent.start | date}} | {{wEvent.title}}</h1>
-            <h2>{{wEvent.type}}</h2>
+            <h1>{{wEvent.title}}</h1>
+            <span>[{{wEvent.type}}]</span>
+            <h2>{{wEvent.start | date}} - {{ wEvent.end | date }}</h2>
         </header>
 
         <p>{{wEvent.description}}</p>
 
         <div class="actions" ng-show="currentUser">
-            <button ui-sref="edit-workevent({ id: wEvent.id })">Edit</button>
-            <button ui-sref="delete-review({ id: wEvent.id })">Delete</button>
+            <button ui-sref="edit-event({ id: wEvent.id })">Edit</button>
+            <button a ui-sref="delete-event({ id: wEvent.id })">Delete</button>
         </div>
     </article>
 </section>

@@ -8,6 +8,8 @@ angular.module('app', ['ui.router', 'lbServices'])
             .state('logout', {url:'/logout', controller:'AuthLogoutController'})
             .state('my-events', {url:'/my-events', controller:'MyEventsController', templateUrl:'views/my-events.html', authenticate: true})
             .state('add-event', {url:'/add-event', controller:'AddEventController', templateUrl:'views/event-form.html', authenticate: true})
+            .state('delete-event', {url:'/delete-event/:id', controller:'DeleteEventController', authenticate:true})
+            .state('edit-event', {url:'/edit-event/:id', controller:'EditEventController', templateUrl:'views/event-form.html', authenticate:true})
         $urlRouterProvider.otherwise('login');
     }])
     .run(['$rootScope', '$state', 'LoopBackAuth', 'AuthService', function($rootScope, $state, LoopBackAuth, AuthService){
